@@ -4,7 +4,7 @@
     <div class="container" style="margin-top: 80px">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Bakery</a></li>
+                <li class="breadcrumb-item"><a href="/">Shop</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cart</li>
             </ol>
         </nav>
@@ -38,10 +38,10 @@
             <div class="col-lg-7">
                 <br>
                 @if(\Cart::getTotalQuantity()>0)
-                    <h4>{{ \Cart::getTotalQuantity()}} Item(s) In Your Cart</h4><br>
+                    <h4>{{ \Cart::getTotalQuantity()}} item(s) In Your Cart</h4><br>
                 @else
-                    <h4>No Item(s) In Your Cart</h4><br>
-                    <a href="/" class="btn btn-dark">Continue Shopping</a>
+                    <h4>No item(s) In Your Cart</h4><br>
+                    <a href="/" class="btn btn-dark">Continue Ordering</a>
                 @endif
 
                 @foreach($cartCollection as $item)
@@ -92,11 +92,61 @@
                             <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>
-                    <br><a href="/shop" class="btn btn-dark">Continue </a>
-                    <a href="/checkout" class="btn btn-success">Proceed To Checkout</a>
+                    <br><a href="{{ route ('cart.index') }}" class="btn btn-dark">Continue </a>
+                    
+                    <button class="btn btn-success" onclick="pay({{ \Cart::getTotal() }})">Procced to Pay</button>
                 </div>
             @endif
         </div>
         <br><br>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+  
+<script type="text/javascript">
+  $(document).ready(function () {  
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+  });
+  
+  function pay(amount) {
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_zriNwZTai8zUOmSvtMmZbr6z00yxnFXUIp', // your publisher key id
+      locale: 'auto',
+      token: function (token) {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        console.log('Token Created!!');
+        console.log(token);
+        $('#token_response').html(JSON.stringify(token));
+  
+        $.ajax({
+          url: '{{ url("store") }}',
+          method: 'post',
+          data: { tokenId: token.id, amount: amount },
+          success: (response) => {
+  
+            console.log(response);
+  
+          },
+          error: (error) => {
+            console.log(error);
+            alert("Payment Done");
+            
+          }
+        })
+      }
+    });
+   
+    handler.open({
+      name: 'Payment',
+      description: '',
+      amount: amount*100
+    });
+  }
+</script>
 @endsection

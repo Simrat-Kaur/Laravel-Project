@@ -7,6 +7,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+
+ .bgimg
+ {
+   background-image: url(/images/b1.jpeg);
+   height: 700px;
+ }
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -4971,6 +4977,7 @@ input[type=button].btn-block {
 .card > hr {
   margin-right: 0;
   margin-left: 0;
+  
 }
 
 .card > .list-group:first-child .list-group-item:first-child {
@@ -4987,6 +4994,7 @@ input[type=button].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
+  color: rgb(105, 105, 179);
 }
 
 .card-title {
@@ -5015,6 +5023,10 @@ input[type=button].btn-block {
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  color:rgb(105, 105, 179);
+  text-align: center;
+  font-size: 20px;
+  font-family: cursive;
 }
 
 .card-header:first-child {
@@ -8626,11 +8638,15 @@ button.bg-dark:focus {
 .pb-4,
 .py-4 {
   padding-bottom: 1.5rem !important;
+
+  
+  
 }
 
 .pl-4,
 .px-4 {
   padding-left: 1.5rem !important;
+  
 }
 
 .p-5 {

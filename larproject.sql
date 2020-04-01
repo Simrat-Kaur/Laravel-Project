@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2020 at 05:27 PM
+-- Generation Time: Apr 01, 2020 at 06:14 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -59,7 +59,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2020_03_23_075313_create_products_table', 1),
 (5, '2020_03_24_085217_create_product1s_table', 2),
-(6, '2020_03_28_153058_create_product2s_table', 3);
+(6, '2020_03_28_153058_create_product2s_table', 3),
+(7, '2020_04_01_105109_create_payments_table', 4),
+(8, '2020_04_01_115122_create_payments_table', 5);
 
 -- --------------------------------------------------------
 
@@ -130,9 +132,6 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'Aman', 'sktakhar333@gmail.com', NULL, '$2y$10$xBYJiOEd4g.UQ7WVlIHSkOLQuOPllJ9XP/OcdPBAEUI3mRtLP8AQ.', NULL, '2020-03-23 03:45:46', '2020-03-23 03:45:46'),
 (3, 'Kiran', 'k@gmail.com', NULL, '$2y$10$TytOG.5SRUW5WgsNpkvYuezU3pRiM5kCLSgN/WRH6Wo6mDh/u56W6', NULL, '2020-03-23 03:55:13', '2020-03-23 03:55:13'),
-(4, 'K1', 'kkkhhh@gmail.com', NULL, '$2y$10$eBBu/gJhf6VgBQtGgcsKRuFIEJhK0.394vuekmI13nIxagfXE7OJO', NULL, '2020-03-23 03:59:37', '2020-03-23 03:59:37'),
-(5, 'kl', 's@gmail.com', NULL, '$2y$10$yo59b/ulsXtb8X.9ZXJ1ne3DupXtxI95l28trM0XUJJahmbSZB0TC', NULL, '2020-03-23 04:01:39', '2020-03-23 04:01:39'),
-(7, 'kl', 'sIM@gmail.com', NULL, '$2y$10$gBu3IuCGaGbDO/pTyyiDzuHp6Dvyk7DiK.e6rfomjo/q5az.YmKQq', NULL, '2020-03-23 04:01:55', '2020-03-23 04:01:55'),
 (8, 'Simrat Kaur', 'simrat.kaur.takhar@gmail.com', NULL, '$2y$10$2syyzPod.13ulg8PqHZ9d./PfBa0iys8ERxABMwQzV9LiiHmmiavO', NULL, '2020-03-24 02:26:11', '2020-03-24 02:26:11'),
 (9, 'HAR', 'slkl@gmail.com', NULL, '$2y$10$wFD01hiskxQ5WJynI0I0JOiqvnMoTgUok.FYvxgLi4ui8bzk612dK', NULL, '2020-03-24 05:17:49', '2020-03-24 05:17:49');
 
@@ -186,7 +185,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product2s`
